@@ -404,9 +404,80 @@ button.product_slide_next {
 */
 
 
+/* 
+    Order Methods 
+*/
+
+.order_methods{
+    margin-top: 40px;
+}
+.single_order_method{
+    width: 20%;
+    position: relative;
+}
+.single_order_method_sec{
+    background: linear-gradient(135deg, #00c9a7, #92fe9d);
+    padding: 10px;
+    border-radius: 5px 120px 5px 5px;
+    margin-right: 25px;
+}
+.soms_1{
+    background: linear-gradient(135deg, #00c9a7, #92fe9d);
+}
+.soms_2{
+    background: linear-gradient(135deg, #ff9966, #ff5e62);
+}
+.soms_3{
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+}
+.soms_4{
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+}
+.soms_5{
+    background: linear-gradient(135deg, #8e2de2, #4a00e0);
+}
+.single_order_method .som_cnt{
+    padding: 10px;
+}
+.single_order_method .som_cnt p{
+    font-size: 18px;
+}
+.single_order_method .som_cnt h1{
+    font-size: 25px;
+    margin: 0 0 8px 0;
+    font-weight: 700;
+}
+.single_order_method_sec img{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 65px;
+    height: 65px;
+    padding: 5px;
+    border-radius: 50px;
+}
+.single_order_method_sec a{
+    display: flex;
+    flex-direction: column; /* Stack text in two lines */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 60px;
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    color: black;
+    background-color: #fff;
+    margin: 5px 0;
+    border-radius: 5px;
+}
 
 /* 
-    product Section Style 'Overview'
+    Order Methods 
+*/
+
+
+/* 
+    product Section Style 
 */
 
 .wrapper{
