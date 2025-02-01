@@ -510,10 +510,10 @@ button.product_slide_next {
     float: left;
 }
 .sng_ecommerce_product{
+    height: 380px;
     padding: 15px;
 }
 .sng_ecommerce_product_sec{
-    background-color: #edecec;
     border-radius: 10px;
     border: 1px solid #ddd;
 }
@@ -521,27 +521,25 @@ button.product_slide_next {
     border: 1px solid rgb(18, 178, 18);
 }
 .product_img img{
-    padding: 15px;
+    padding: 10px;
+    margin-bottom: 5px;
     height: 220px;
+    border-bottom: 1px solid #ddd;
 }
 .product_image{
     position: relative;
 }
-.add_wish{
-    display: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.express_delivery{
     width: 100%;
     text-align: center;
 }
-.add_wish_text{
+.express_delivery_text{
     display: none;
     position: absolute;
     width: 100%;
     bottom: 35px;
 }
-.add_wish_text p{
+.express_delivery_text p{
     background-color: rgb(6, 166, 28);
     padding: 5px 8px;
     display: inline-block;
@@ -549,17 +547,30 @@ button.product_slide_next {
     font-size: 16px;
     border-radius: 5px
 }
-.add_wish:hover .add_wish_text{
+.express_delivery:hover .express_delivery_text{
     display: block;
     transition: .1s all ease-in-out;
 }
-.add_wish_icon i{
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 19px;
+.express_delivery_icon p{
+    background: #e5e3e3;
+    padding: 5px;
+    font-size: 13px;
+    padding-bottom: 2px;
+    width: 44%;
+    margin-left: 13px;
+    border-radius: 3px;
 }
-.sng_ecommerce_product_item:hover .add_wish{
+.express_delivery_icon i{
+    width: 16px;
+    height: 16px;
+    padding: 4px 0px 0px 0px;
+    margin-right: 5px;
+    font-size: 8px;
+    color: coral;
+    background: black;
+    border-radius: 50px;
+}
+.sng_ecommerce_product_item:hover .express_delivery{
     display: block;
     transition: .1s all ease-in-out;
 }
@@ -627,8 +638,115 @@ button.product_slide_next {
     color: rgb(7, 65, 117);
 }
 
-
 /* 
     product Section Style 1 'Overview'
 */
+
+
+/* 
+    Cart Page
+*/
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+.cart_item_no{
+    width: 5%;
+}
+.cart_medicine_name{
+    width: 65%;
+}
+.cart_item_qpt{
+    width: 10%;
+    text-align: center;
+}
+.cart_sub_total{
+    width: 80%;
+    float: right;
+    margin-top: 30px;
+}
+
+.shipping_address{
+    position: relative;
+    margin-top: 50px;
+}
+.shipping_address_edit{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.shipping_address_edit button{
+    display: block;
+    font-size: 18px;
+    color: black;
+    padding: 8px 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #cdcfce;
+}
+.address_edit_form .close_btn{
+    position: absolute;
+    right: 20px;
+    border: 1px solid red;
+    border-radius: 5px;
+    background-color: transparent;
+}
+.address_edit_form .close_btn i{
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+    float: right;
+}
+.address_edit_form{
+    width: 50%;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    z-index: 999999999;
+    transition: .3s all ease-in-out;
+}
+.address_edit_form_sec{
+    display: inline-block;
+}
+.ae_form_field{
+    width: 50%;
+    float: left;
+}
+.ae_form_field input{
+    border: 1px solid #ddd;
+}
+.submit_button{
+    width: 100%;
+    overflow: hidden;
+    margin-top: 30px;
+    text-align: center;
+}
+.submit_button button{
+    padding: 8px;
+    width: 200px;
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: orangered;
+    color: #fff;
+}
+
+/* 
+    End Cart Page
+*/
+
+
+
 
