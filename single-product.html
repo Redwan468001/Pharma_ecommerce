@@ -183,27 +183,36 @@
                 <!-- Single Page Product Info -->
                 <div class="single_product_page flex">
                     
-                    <div class="single_product_page_left width_50">
+                    <div class="single_product_page_left width_55">
                         <div class="spp_left_section">
-                            <div class="spp_left_product_img flex">
-                                <div class="spp_left_product_all_img width_20">
-                                    <img src="product_img/medi.avif" alt="">
-                                    <img src="product_img/medi2.png" alt="">
+                            <div class="spp_left_product_img">
+                                <div class="spp_left_product_image width_80 res_width_100 right">
+                                    <img id="mainImage" src="product_img/medi.avif" alt="">
+                                    <div id="zoomLens"></div>
                                 </div>
-                                <div class="spp_left_product_full_img width_80">
-                                    <img src="product_img/medi.avif" alt="">
+                                <div class="spp_left_product_gallery width_20 res_width_100 left">
+                                    <img class="thumbnail" src="product_img/medi.avif" alt="" onclick="changeImage('product_img/medi.avif')">
+                                    <img class="thumbnail" src="product_img/medi2.png" alt="" onclick="changeImage('product_img/medi2.png')">
                                 </div>
                             </div>
+                            
                             <div class="spp_product_description">
-                                
+
                             </div>
                         </div>
+                        
                     </div>
 
-                    <div class="single_product_page_right width_50">
+                    <div class="single_product_page_right width_45" style="position: relative;">
                         <div class="spp_right_section">
                             <h2>Product Name</h2>
                             <p>5 ***** (100 rating)</p>
+                        </div>
+                        <!-- Right side: Zoomed Image Box -->
+                        <div class="product_image_zoom_box_sec">
+                            <div class="product_image_zoom_box">
+                                <div class="zoom-result" id="zoomResult"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -502,6 +511,67 @@
             
     </script>
 
+
+    <!-- Product Gallery -->
+    <script>
+	
+		// Function to change the main image and update the zoom effect
+		function changeImage(imageSrc) {
+			let mainImage = document.getElementById('mainImage');
+			let zoomResult = document.getElementById('zoomResult');
+			
+			mainImage.src = imageSrc;
+			zoomResult.style.backgroundImage = `url(${imageSrc})`;
+		}
+
+		// Auto-select the first image on page load
+		window.onload = function () {
+			let firstThumbnail = document.querySelector('.thumbnail');
+			if (firstThumbnail) {
+				let firstImageSrc = firstThumbnail.src;
+				changeImage(firstImageSrc);
+			}
+		};
+
+		// Zoom effect on hover
+		let mainImage = document.getElementById('mainImage');
+		let zoomLens = document.getElementById('zoomLens');
+		let zoomBox = document.querySelector('.product_image_zoom_box');
+		let zoomResult = document.getElementById('zoomResult');
+
+		mainImage.addEventListener('mouseenter', function () {
+			zoomLens.style.display = 'block';  // Show zoom lens
+			zoomBox.style.display = 'block';  // Show zoom box
+		});
+
+		mainImage.addEventListener('mousemove', function (event) {
+			let rect = mainImage.getBoundingClientRect();
+			let x = event.clientX - rect.left;
+			let y = event.clientY - rect.top;
+
+			// Keep lens inside the main image boundaries
+			let lensSize = 80;
+			let lensX = Math.max(0, Math.min(x - lensSize / 2, rect.width - lensSize));
+			let lensY = Math.max(0, Math.min(y - lensSize / 2, rect.height - lensSize));
+
+			zoomLens.style.left = `${lensX}px`;
+			zoomLens.style.top = `${lensY}px`;
+
+			// Apply zoom effect to the right box
+			let zoomFactor = 3;
+			zoomResult.style.backgroundPosition = `-${lensX * zoomFactor}px -${lensY * zoomFactor}px`;
+		});
+
+		// Hide zoom effect when mouse leaves
+		mainImage.addEventListener('mouseleave', function () {
+			zoomLens.style.display = 'none';
+			zoomBox.style.display = 'none';
+		});
+
+		
+	</script>
+	
+    <!-- End Product Gallery -->
 
 </body>
 </html>

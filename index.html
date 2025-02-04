@@ -215,6 +215,47 @@
                 </div>
                 <!-- End Slider -->
 
+                <!-- Upload Prescription Section -->
+                <div class="create_prescription_section">
+                    <div class="create_prescription">
+
+                        <div style="width:100%;">
+                            <table>
+                            {{ medication_formset.management_form }}
+                            <tbody>
+                                {% for form in medication_formset.forms %}
+                                <tr>
+                                    <th>Medications</th>
+                                    <td>{{ form.medications }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Doses</th>
+                                    <td>{{ form.doses }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Days</th>
+                                    <td>{{ form.days }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Rules</th>
+                                    <td>{{ form.rules }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Times</th>
+                                    <td>{{ form.times }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                
+                            <button type="button" id="add-medication">Add another Medication</button>
+                            <button type="submit">Add Prescription</button>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End Upload Prescription Section -->
+
                 <!-- Order Method -->
                 <div class="order_methods flex">
 
@@ -581,6 +622,39 @@
             
     </script>
 
+
+    <!-- Create Prescription -->
+    document.addEventListener('DOMContentLoaded', function () {
+        const addButton = document.getElementById('add-medication');
+        const formsetTable = document.querySelector('table tbody');
+        const totalFormsInput = document.getElementById('id_medications-TOTAL_FORMS');
+    
+        addButton.addEventListener('click', function () {
+            const totalForms = parseInt(totalFormsInput.value);
+            const formRows = formsetTable.querySelectorAll('tr');
+            
+            // Clone all rows belonging to the last form
+            const newFormRows = [];
+            let lastIndex = totalForms - 1;
+    
+            formRows.forEach(row => {
+                if (row.innerHTML.includes(`-${lastIndex}-`)) {
+                    const newRow = row.cloneNode(true);
+                    newRow.innerHTML = newRow.innerHTML.replace(/\d+/g, totalForms); // Update form index
+                    newFormRows.push(newRow);
+                }
+            });
+    
+            // Append new form rows
+            newFormRows.forEach(row => formsetTable.appendChild(row));
+    
+            // Update total form count
+            totalFormsInput.value = totalForms + 1;
+        });
+    });
+    
+    </script>
+    <!-- End Create Prescription -->
 
 </body>
 </html>
